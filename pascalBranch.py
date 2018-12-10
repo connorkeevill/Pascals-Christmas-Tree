@@ -1,20 +1,22 @@
 
 
 class pascalBranch:
-    def __init__(self, parent=None):
+    def __init__(self, parentBranch=None):
         self.leaves = []
 
-        if parent is None:
+        # | The first two if statements generate the first two branches
+        if parentBranch is None:
             self.leaves = [1]
-        elif parent.leaves == [1]:
+        elif parentBranch.leaves == [1]:
             self.leaves = [1, 1]
         else:
-            self.generateLayer(parent)
+            self.generateBranch(parentBranch)
 
-    def generateLayer(self, parent):
-        for item in range(len(parent.leaves) + 1):
-            if item == 0 or item == len(parent.leaves):
+    def generateBranch(self, parentBranch):
+        for number in range(len(parentBranch.leaves) + 1):
+            # | If we are looking at the first or last item of the parent branch
+            if number == 0 or number == len(parentBranch.leaves):
                 self.leaves.append(1)
             else:
-                leaf = parent.leaves[item - 1] + parent.leaves[item]
+                leaf = parentBranch.leaves[number - 1] + parentBranch.leaves[number]
                 self.leaves.append(leaf)

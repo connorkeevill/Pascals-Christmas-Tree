@@ -3,7 +3,6 @@ from pascalBranch import pascalBranch
 class pascalTree:
     def __init__(self, height):
         self.branches = []
-
         self.buildTree(height)
 
     def buildTree(self, height):
@@ -14,6 +13,6 @@ class pascalTree:
         for branch in range(1, height):
             self.branches.append(pascalBranch(self.branches[branch - 1]))
 
-    def getTree(self):
+    def getBranches(self):
         return self.branches
 
