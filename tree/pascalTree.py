@@ -1,4 +1,4 @@
-from pascalBranch import pascalBranch
+from tree.pascalBranch import pascalBranch
 
 class pascalTree:
     def __init__(self, height):
