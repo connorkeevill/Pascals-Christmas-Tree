@@ -8,7 +8,7 @@ pygame.init()
 windowWidth = 700
 windowHeight = 600
 
-FPS = 3
+FPS = 20
 clock = pygame.time.Clock()
 
 window = pygame.display.set_mode((windowWidth, windowHeight))

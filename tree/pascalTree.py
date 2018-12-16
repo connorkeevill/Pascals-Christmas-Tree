@@ -1,6 +1,9 @@
 from tree.pascalLeaf import pascalLeaf
 import pygame
 import colours
+import threading
+import random
+import time
 
 class pascalTree:
     def __init__(self, height, leafSize):
@@ -8,6 +11,10 @@ class pascalTree:
         self.treeHeight = height
 
         self.leafSize = leafSize
+
+        primeColourChanger = threading.Thread(target=self.flashPrimes)
+        primeColourChanger.setDaemon(True)
+        primeColourChanger.start()
 
     def buildTree(self, height):
         tree = []
@@ -40,3 +47,11 @@ class pascalTree:
 
         baseWidth = 0.2 * (self.treeHeight * self.leafSize)
         pygame.draw.rect(display, colours.baseBrown, (displayMid - (baseWidth / 2), height + ((self.treeHeight + 1) * self.leafSize), baseWidth, baseWidth / 2))
+
+    def flashPrimes(self):
+        while True:
+            for branch in self.tree:
+                for leaf in branch:
+                    if leaf.isPrime:
+                        leaf.colour = random.choice(colours.baubleColours)
+            time.sleep(1 / 4)

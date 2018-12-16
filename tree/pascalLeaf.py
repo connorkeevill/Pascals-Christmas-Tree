@@ -14,7 +14,6 @@ class pascalLeaf():
 
         self.colour = self.calculateColour(self.pascalValue, branchNumber, leafNumber)
 
-
     # | nCr()
     # |-----------------------------------------------------------
     # | Calculates the value of a pascal's triangle node with
