@@ -5,26 +5,24 @@ from tree.pascalTree import pascalTree
 
 pygame.init()
 
-windowWidth = 400
-windowHeight = 400
+windowWidth = 700
+windowHeight = 600
 
 FPS = 3
 clock = pygame.time.Clock()
 
 window = pygame.display.set_mode((windowWidth, windowHeight))
 
-tree = pascalTree(120, 2)
+tree = pascalTree(125, 4)
 
 while True:
-
     tree.draw(window, 20)
-
-    pygame.display.flip()
 
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
 
+    pygame.display.flip()
     clock.tick(FPS)
 

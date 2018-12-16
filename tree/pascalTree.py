@@ -1,9 +1,11 @@
 from tree.pascalLeaf import pascalLeaf
 import pygame
+import colours
 
 class pascalTree:
     def __init__(self, height, leafSize):
         self.tree = self.buildTree(height)
+        self.treeHeight = height
 
         self.leafSize = leafSize
 
@@ -36,8 +38,5 @@ class pascalTree:
                 pygame.draw.rect(display, leaf.colour, (Xpos + self.leafSize * leafNumber, Ypos, self.leafSize, self.leafSize))
                 leafNumber += 1
 
-
-
-
-
-
+        baseWidth = 0.2 * (self.treeHeight * self.leafSize)
+        pygame.draw.rect(display, colours.baseBrown, (displayMid - (baseWidth / 2), height + ((self.treeHeight + 1) * self.leafSize), baseWidth, baseWidth / 2))
