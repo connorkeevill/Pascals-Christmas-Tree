@@ -1,18 +1,19 @@
-from tree.pascalBranch import pascalBranch
+from tree.pascalLeaf import pascalLeaf
 
 class pascalTree:
     def __init__(self, height):
-        self.branches = []
-        self.buildTree(height)
+        self.tree = self.buildTree(height)
 
     def buildTree(self, height):
+        tree = []
 
-        treeTop = pascalBranch()
-        self.branches.append(treeTop)
+        for layer in range(height):
+            treeLayer = []
 
-        for branch in range(1, height):
-            self.branches.append(pascalBranch(self.branches[branch - 1]))
+            for leaf in range(layer + 1):
+                treeLayer.append(pascalLeaf(layer, leaf))
 
-    def getBranches(self):
-        return self.branches
+            tree.append(treeLayer)
+
+        return tree
 

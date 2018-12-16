@@ -2,7 +2,6 @@ import pygame
 import sys
 from pygame.locals import *
 from tree.pascalTree import pascalTree
-from tree.christmasTree import christmasTree
 
 pygame.init()
 
@@ -16,11 +15,7 @@ window = pygame.display.set_mode((windowWidth, windowHeight))
 
 tree = pascalTree(20)
 
-christmas = christmasTree(tree, window)
-
 while True:
-    christmas.draw()
-    pygame.display.flip()
 
     for event in pygame.event.get():
         if event.type == QUIT:
