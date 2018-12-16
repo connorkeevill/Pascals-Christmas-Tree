@@ -9,12 +9,14 @@ import colours
 # | each node of a Pascal Christmas tree.
 # |----------------------------------
 class pascalLeaf():
-    def __init__(self, branchNumber, leafNumber):
+    def __init__(self, branchNumber, leafNumber, size):
         self.pascalValue = self.nCr(branchNumber, leafNumber)
 
         self.isPrime = helpers.is_Prime(self.pascalValue)
 
         self.colour = 0
+        self.Xpos = (leafNumber * size) - (branchNumber * (size / 2))
+        self.Ypos = (branchNumber * size)
 
         self.calculateColour(self.pascalValue, 1.4)
 
