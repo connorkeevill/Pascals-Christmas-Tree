@@ -8,12 +8,12 @@ pygame.init()
 windowWidth = 400
 windowHeight = 400
 
-FPS = 60
+FPS = 3
 clock = pygame.time.Clock()
 
 window = pygame.display.set_mode((windowWidth, windowHeight))
 
-tree = pascalTree(20, 10)
+tree = pascalTree(120, 2)
 
 while True:
 

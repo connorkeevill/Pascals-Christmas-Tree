@@ -9,16 +9,7 @@ class pascalLeaf():
     def __init__(self, branchNumber, leafNumber):
         self.pascalValue = self.nCr(branchNumber, leafNumber)
 
-        shadeValue = 0
-
-        if self.pascalValue > 1:
-            shadeValue = self.pascalValue // branchNumber
-
-        if shadeValue > 225:
-            shadeValue = 225
-
-        green = 255 - shadeValue
-        self.colour = (0, green, 0)
+        self.colour = self.calculateColour(self.pascalValue, branchNumber, leafNumber)
 
     # | nCr()
     # |-----------------------------------------------------------
@@ -28,3 +19,12 @@ class pascalLeaf():
     def nCr(self, n, r):
         value = math.factorial(n) / (math.factorial(r) * (math.factorial(n - r)))
         return value
+
+    def calculateColour(self, leafValue, leafBranch, leafNumber):
+
+        colourOffset = int(math.log(leafValue, 1.4))
+        print(colourOffset)
+
+        green = 255 - colourOffset
+
+        return (0, green, 0)
