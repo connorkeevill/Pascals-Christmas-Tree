@@ -1,4 +1,5 @@
 import math
+import helpers
 
 # | pascalLeaf()
 # |--------------------------------------------
@@ -9,7 +10,10 @@ class pascalLeaf():
     def __init__(self, branchNumber, leafNumber):
         self.pascalValue = self.nCr(branchNumber, leafNumber)
 
+        self.isPrime = helpers.is_Prime(self.pascalValue)
+
         self.colour = self.calculateColour(self.pascalValue, branchNumber, leafNumber)
+
 
     # | nCr()
     # |-----------------------------------------------------------
@@ -21,6 +25,9 @@ class pascalLeaf():
         return value
 
     def calculateColour(self, leafValue, leafBranch, leafNumber):
+
+        if self.isPrime:
+            return (255, 0, 0)
 
         colourOffset = int(math.log(leafValue, 1.4))
         print(colourOffset)
