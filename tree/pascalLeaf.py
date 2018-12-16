@@ -1,5 +1,7 @@
 import math
 import helpers
+import random
+import colours
 
 # | pascalLeaf()
 # |--------------------------------------------
@@ -12,7 +14,9 @@ class pascalLeaf():
 
         self.isPrime = helpers.is_Prime(self.pascalValue)
 
-        self.colour = self.calculateColour(self.pascalValue, branchNumber, leafNumber)
+        self.colour = 0
+
+        self.calculateColour(self.pascalValue, 1.4)
 
     # | nCr()
     # |-----------------------------------------------------------
@@ -23,14 +27,13 @@ class pascalLeaf():
         value = math.factorial(n) / (math.factorial(r) * (math.factorial(n - r)))
         return value
 
-    def calculateColour(self, leafValue, leafBranch, leafNumber):
+    def calculateColour(self, leafValue, logarithmBase):
 
         if self.isPrime:
-            return (255, 0, 0)
+            return random.choice(colours.baubleColours)
 
-        colourOffset = int(math.log(leafValue, 1.4))
-        print(colourOffset)
+        colourOffset = int(math.log(leafValue, logarithmBase))
 
         green = 255 - colourOffset
 
-        return (0, green, 0)
+        self.colour = (0, green, 0)

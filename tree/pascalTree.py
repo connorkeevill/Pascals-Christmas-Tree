@@ -16,6 +16,10 @@ class pascalTree:
         primeColourChanger.setDaemon(True)
         primeColourChanger.start()
 
+        shadeChange = threading.Thread(target=self.changeTreeShading)
+        shadeChange.setDaemon(True)
+        shadeChange.start()
+
     def buildTree(self, height):
         tree = []
 
@@ -55,3 +59,27 @@ class pascalTree:
                     if leaf.isPrime:
                         leaf.colour = random.choice(colours.baubleColours)
             time.sleep(1 / 4)
+
+    def changeTreeShading(self):
+        upperLimit = 1.8
+        lowerLimit = 1.39
+
+        increasing = True
+
+        baseValue = 1.4
+        adjustmentValue = 0.003
+
+        while True:
+            if baseValue < lowerLimit:
+                increasing = True
+            elif baseValue > upperLimit:
+                increasing = False
+
+            if increasing: baseValue += adjustmentValue
+            else: baseValue -= adjustmentValue
+
+            for branch in self.tree:
+                for leaf in branch:
+                    leaf.calculateColour(leaf.pascalValue, baseValue)
+
+            time.sleep(1/60)
