@@ -20,18 +20,18 @@ snowStorm = snowStorm()
 tree = pascalTree(125, 4)
 
 while True:
-    window.fill(colours.black)
+	window.fill(colours.black)
 
-    snowStorm.fall()
-    snowStorm.draw(window)
+	snowStorm.fall()
+	snowStorm.draw(window)
 
-    tree.draw(window, 20)
+	tree.draw(window, 20)
 
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            pygame.quit()
-            sys.exit()
+	for event in pygame.event.get():
+		if event.type == QUIT:
+			pygame.quit()
+			sys.exit()
 
-    pygame.display.flip()
-    clock.tick(FPS)
+	pygame.display.flip()
+	clock.tick(FPS)
 
